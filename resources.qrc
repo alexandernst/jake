@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/skins">
+        <file>resources/skins/Black/style.qss</file>
+    </qresource>
+</RCC>
