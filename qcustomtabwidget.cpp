@@ -60,7 +60,7 @@ void QCustomTabWidget::addTab()
 {
     textBrowser = new QCustomTextBrowser(this);
     insertTab(count(), textBrowser, tabnameprefix);
-    QObject::connect(textBrowser, SIGNAL(showContextMenu()), this, SLOT(showContextMenu()));dddd
+    QObject::connect(textBrowser, SIGNAL(showContextMenu()), this, SLOT(showContextMenu()));
 }
 
 void QCustomTabWidget::removeTab()
