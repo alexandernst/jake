@@ -94,33 +94,36 @@ bool QCustomTextBrowser::eventFilter(QObject *obj, QEvent *event)
 
 void QCustomTextBrowser::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+    int qkeyevent = event->key();
+    Qt::KeyboardModifiers qkeymodifiers = event->modifiers();
+
+    if(qkeyevent == Qt::Key_Return || qkeyevent == Qt::Key_Enter){
         process();
-    } else if(event->key() == Qt::Key_Backspace) {
+    } else if(qkeyevent == Qt::Key_Backspace) {
         deleteLast();
-    } else if(event->key() == Qt::Key_Delete) {
+    } else if(qkeyevent == Qt::Key_Delete) {
         deleteNext();
-    } else if(event->key() == Qt::Key_Left) {
-        if(event->key() == Qt::Key_Left && event->modifiers() & Qt::ControlModifier) {
+    } else if(qkeyevent == Qt::Key_Left) {
+        if(qkeymodifiers & Qt::ControlModifier) {
             moveLeftControl();
-        } else if(event->key() == Qt::Key_Left && event->modifiers() & Qt::ShiftModifier) {
+        } else if(qkeymodifiers & Qt::ShiftModifier) {
             moveLeftShift();
         } else {
             moveLeft();
         }
-    } else if(event->key() == Qt::Key_Right) {
-        if(event->key() == Qt::Key_Right && event->modifiers() & Qt::ControlModifier) {
+    } else if(qkeyevent == Qt::Key_Right) {
+        if(qkeymodifiers & Qt::ControlModifier) {
             moveRightControl();
-        } else if(event->key() == Qt::Key_Right && event->modifiers() & Qt::ShiftModifier) {
+        } else if(qkeymodifiers & Qt::ShiftModifier) {
             moveRightShift();
         } else {
             moveRight();
         }
-    } else if(event->key() == Qt::Key_Up) {
+    } else if(qkeyevent == Qt::Key_Up) {
         upHistory();
-    } else if(event->key() == Qt::Key_Down) {
+    } else if(qkeyevent == Qt::Key_Down) {
         downHistory();
-    } else if(event->key() == Qt::Key_Tab) {
+    } else if(qkeyevent == Qt::Key_Tab) {
         predict();
     } else {
         insert(event->text(), false);
