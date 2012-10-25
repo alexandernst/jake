@@ -7,6 +7,7 @@ QT += network phonon
 SOURCES += \
     main.cpp \
     qconsole.cpp \
+    qcustomplugin.cpp \
     qcustomtabbar.cpp \
     qcustomtabwidget.cpp \
     qcustomtextbrowser.cpp \
@@ -19,7 +20,7 @@ SOURCES += \
     libs/qtglobalshortcut/qtglobalshortcut.cpp \
     libs/qtsingleapplication/qtsingleapplication.cpp \
     libs/qtsingleapplication/qtlocalpeer.cpp \
-    libs/qtsingleapplication/qtlockedfile.cpp \
+    libs/qtsingleapplication/qtlockedfile.cpp
 
 macx{
   SOURCES += libs/qtglobalshortcut/qtglobalshortcut_mac.cpp
@@ -60,7 +61,7 @@ HEADERS += \
     libs/qtglobalshortcut/qtglobalshortcut_p.h \
     libs/qtsingleapplication/qtsingleapplication.h \
     libs/qtsingleapplication/qtlocalpeer.h \
-    libs/qtsingleapplication/qtlockedfile.h \
+    libs/qtsingleapplication/qtlockedfile.h
 
 RESOURCES += \
     resources.qrc

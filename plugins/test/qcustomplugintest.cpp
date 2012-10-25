@@ -18,7 +18,7 @@ void QCustomPluginTest::process(QString command)
             emit clearLine();
         }
         emit reply("100 %<br>", true);
-        QString str = ask(QString("Ask: "), false);
+        QString str = ask(QString("Reply with some answer: "), false);
         emit reply("<br>Got reply: " + str, true);
     }
     emit pluginFinished(true);
