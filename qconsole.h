@@ -47,7 +47,7 @@ private:
     QPropertyAnimation *windowHeightAnimation;
     QPropertyAnimation *windowOpacityAnimation;
 public slots:
-    void globalKeyPress();
+    void toggleVisibility();
     void windowAnimationFinished();
 private slots:
     void appKeyPress();

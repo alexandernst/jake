@@ -63,7 +63,7 @@ QConsole::QConsole(QWidget *parent) :
     keyboardHook = new QtGlobalShortcut();
     keyboardHook->setShortcut(QKeySequence(visibilityhotkey));
     QObject::connect(widgetHook, SIGNAL(activated()), this, SLOT(appKeyPress()));
-    QObject::connect(keyboardHook, SIGNAL(activated()), this, SLOT(globalKeyPress()));
+    QObject::connect(keyboardHook, SIGNAL(activated()), this, SLOT(toggleVisibility()));
 }
 
 void QConsole::appKeyPress()
@@ -77,7 +77,7 @@ void QConsole::appKeyPress()
     exit(0);
 }
 
-void QConsole::globalKeyPress()
+void QConsole::toggleVisibility()
 {
     if(isVisible()){
         //Fade animation.
@@ -103,7 +103,9 @@ void QConsole::globalKeyPress()
 void QConsole::windowAnimationFinished()
 {
     if(windowOpacityAnimation->endValue() == 1.0){
-        //We don't need to do anything here as we already set visibility to true.
+        //Set focus to the current console
+        this->activateWindow();
+        this->tabWidget->currentWidget()->setFocus();
     } else {
         setVisible(false);
     }
