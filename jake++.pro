@@ -20,8 +20,7 @@ SOURCES += \
     libs/qtglobalshortcut/qtglobalshortcut.cpp \
     libs/qtsingleapplication/qtsingleapplication.cpp \
     libs/qtsingleapplication/qtlocalpeer.cpp \
-    libs/qtsingleapplication/qtlockedfile.cpp \
-    libs/smtp/smtp.cpp
+    libs/qtsingleapplication/qtlockedfile.cpp
 
 macx{
   SOURCES += libs/qtglobalshortcut/qtglobalshortcut_mac.cpp
@@ -62,8 +61,7 @@ HEADERS += \
     libs/qtglobalshortcut/qtglobalshortcut_p.h \
     libs/qtsingleapplication/qtsingleapplication.h \
     libs/qtsingleapplication/qtlocalpeer.h \
-    libs/qtsingleapplication/qtlockedfile.h \
-    libs/smtp/smtp.h
+    libs/qtsingleapplication/qtlockedfile.h
 
 RESOURCES += \
     resources.qrc
