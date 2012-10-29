@@ -1,7 +1,6 @@
 #include "asyncdown.h"
 
-AsyncDown::AsyncDown(QObject *parent) :
-    QThread(parent)
+AsyncDown::AsyncDown(QObject *parent) : QThread(parent)
 {
     active = false;
 }

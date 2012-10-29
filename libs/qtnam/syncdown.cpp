@@ -1,7 +1,6 @@
 #include "syncdown.h"
 
-SyncDown::SyncDown(QObject *parent) :
-    QObject(parent)
+SyncDown::SyncDown(QObject *parent) : QObject(parent)
 {
     active = false;
     //Create QNAM.
