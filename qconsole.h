@@ -15,7 +15,6 @@
 #include <QPropertyAnimation>
 #include "qcustomtabwidget.h"
 #include "libs/qtglobalshortcut/qtglobalshortcut.h"
-#include "libs/qtsingleapplication/qtsingleapplication.h"
 
 class QConsole : public QWidget
 {
