@@ -1,24 +1,58 @@
 #include "qconsole.h"
+#include <QSharedMemory>
+
+bool isRunning(){
+    QSharedMemory sm("jake++");
+
+    if(sm.create(1)){
+        return false; //Wrong on Windows
+        //http://stackoverflow.com/questions/13120374/qsharedmemory-inconsistent-behaviour-in-windows
+        //damn trolls coded shitty code...
+    }else{
+        switch(sm.error()){
+            case QSharedMemory::NoError:
+                //No other instances are running
+                return false;
+                break;
+            case QSharedMemory::AlreadyExists:
+                //There is a shared memory with the same key
+                //Check if that memory is left after a crash
+                sm.attach();
+                sm.detach();
+                return isRunning();
+                break;
+            default:
+                return true;
+                break;
+        }
+    }
+    return true;
+}
 
 int main(int argc, char *argv[])
 {
-    QtSingleApplication app("jake++", argc, argv);
+    //QtSingleApplication app("jake++", argc, argv);
+    QApplication app(argc, argv);
 
-    if (app.sendMessage("Do I exist?"))
+    //if (app.sendMessage("Do I exist?"))
+    //    return 0;
+
+    if(isRunning()){
+        qDebug() << "is running";
         return 0;
-    app.initialize(true);
+    }else{
+        qDebug() << "is not running";
+    }
     app.setGraphicsSystem("raster");
     app.setApplicationName("jake++");
     app.setQuitOnLastWindowClosed(false);
     Q_INIT_RESOURCE(resources);
     QConsole console;
-    console.toggleVisibility();
     QFile qss(":/skins/resources/skins/Black/style.qss");
     qss.open(QFile::ReadOnly);
     console.setStyleSheet(qss.readAll());
     qss.close();
-    app.setActivationWindow(&console);
-    QObject::connect(&app, SIGNAL(messageReceived(const QString&)), &console, SLOT(toggleVisibility()));
+    console.toggleVisibility();
     QDir::setCurrent(QCoreApplication::applicationDirPath());
     return app.exec();
 }
