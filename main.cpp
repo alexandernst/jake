@@ -31,17 +31,10 @@ bool isRunning(){
 
 int main(int argc, char *argv[])
 {
-    //QtSingleApplication app("jake++", argc, argv);
     QApplication app(argc, argv);
 
-    //if (app.sendMessage("Do I exist?"))
-    //    return 0;
-
     if(isRunning()){
-        qDebug() << "is running";
         return 0;
-    }else{
-        qDebug() << "is not running";
     }
     app.setGraphicsSystem("raster");
     app.setApplicationName("jake++");
